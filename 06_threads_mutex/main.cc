@@ -1,38 +1,41 @@
 // This example demonstrates using a mutex to avoid a race condition when
 // adding values to a vector.
 
-#include <iostream>
-#include <fstream>
-#include <vector>
 #include <math.h>
-#include <thread>
-#include <chrono>
-#include <mutex>
 
-std::mutex data_mutex;
+#include <chrono>
+#include <fstream>
+#include <iostream>
+#include <mutex>
+#include <thread>
+#include <vector>
+
+std::mutex       data_mutex;
 std::vector<int> data;
 
-void call_from_thread(int tid)
+void
+call_from_thread(int tid)
 {
-  for (unsigned int i=0; i<5; ++i)
+  for (unsigned int i = 0; i < 5; ++i)
     {
       int value = tid; // imagine some computation here
 
       // compute something
       {
-       std::lock_guard<std::mutex> lock(data_mutex);
-       data.push_back(value);
+        std::lock_guard<std::mutex> lock(data_mutex);
+        data.push_back(value);
       }
 
-      //data_mutex.lock();
-      //data.push_back(value);
-      //data_mutex.unlock();
+      // data_mutex.lock();
+      // data.push_back(value);
+      // data_mutex.unlock();
 
       // compute more
     }
 }
 
-int main()
+int
+main()
 {
   const int num_threads = 10;
   std::cout << "Starting " << num_threads << " threads ..." << std::endl;

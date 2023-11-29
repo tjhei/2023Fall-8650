@@ -24,10 +24,10 @@ struct NumberCache<2>
   unsigned int n_quads;
 };
 
-int main()
+int
+main()
 {
   NumberCache<2> nc;
   nc.n_quads = 2;
   std::cout << nc.n_quads << std::endl;
-
 }

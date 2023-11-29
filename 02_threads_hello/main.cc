@@ -1,25 +1,28 @@
 // This show you how to create and run several threads using c++ std::thread
 
-#include <iostream>
-#include <fstream>
-#include <vector>
 #include <math.h>
-#include <thread>
 
-void thread_function(int tid)
+#include <fstream>
+#include <iostream>
+#include <thread>
+#include <vector>
+
+void
+thread_function(int tid)
 {
-  std::cout << "I am " << std::this_thread::get_id()
-            << " with index " << tid << std::endl;
-  
-  for (unsigned int i=0; i<10; ++i)
-  {
-    std::this_thread::sleep_for(std::chrono::milliseconds(1));
-    std::cout << i << " ";
-  }
+  std::cout << "I am " << std::this_thread::get_id() << " with index " << tid
+            << std::endl;
+
+  for (unsigned int i = 0; i < 10; ++i)
+    {
+      std::this_thread::sleep_for(std::chrono::milliseconds(1));
+      std::cout << i << " ";
+    }
   std::cout << std::endl;
 }
 
-int main()
+int
+main()
 {
   const int num_threads = 4;
   std::cout << "Starting " << num_threads << " threads ..." << std::endl;

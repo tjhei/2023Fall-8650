@@ -2,7 +2,8 @@
 
 // This function template takes any class T as an argument:
 template <typename T>
-void yell (T test)
+void
+yell(T test)
 {
   test.shout("HI!");
 };
@@ -10,7 +11,8 @@ void yell (T test)
 class cat
 {
 public:
-  void shout(const std::string &what)
+  void
+  shout(const std::string &what)
   {
     std::cout << "cat says " << what << std::endl;
   }
@@ -19,13 +21,15 @@ public:
 class dog
 {
 public:
-  void shout(const std::string &what)
+  void
+  shout(const std::string &what)
   {
     std::cout << "woof!" << std::endl;
   }
 };
 
-int main()
+int
+main()
 {
   cat mycat;
   dog mydog;
